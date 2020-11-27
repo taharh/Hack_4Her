@@ -3,11 +3,13 @@ import 'package:splashscreen/splashscreen.dart';
 import 'package:hack_her/calendar.dart';
 
 class MySplashScreen extends StatefulWidget {
+
   @override
   _MySplashScreenState createState() => _MySplashScreenState();
 }
 
 class _MySplashScreenState extends State<MySplashScreen> {
+
   @override
   Widget build(BuildContext context) {
     return Center(
@@ -21,8 +23,8 @@ class _MySplashScreenState extends State<MySplashScreen> {
           end: Alignment.bottomRight,
           stops: [0, 1],
           colors: [
-            _getColorFromHex('#FFDCB3'),
-            _getColorFromHex('#FF8F8F'),
+            Color(0x16768179),
+            Color(0x16748431),
           ],
         ),
       navigateAfterSeconds: Calendar(),

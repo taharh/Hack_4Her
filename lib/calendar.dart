@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
 import 'package:hack_her/authentification.dart';
-import 'package:hack_her/helpers/helper.dart';
 
 class Calendar extends StatefulWidget {
   @override
@@ -9,9 +8,6 @@ class Calendar extends StatefulWidget {
 }
 
 class _CalendarState extends State<Calendar> {
-  
-  final Helper helper ;
-  _CalendarState(this.helper);
 
   int pos = 1;
   
@@ -26,7 +22,7 @@ class _CalendarState extends State<Calendar> {
   Widget build(BuildContext context) {
     return Container(
       child: Scaffold(
-        backgroundColor: helper.getColorFromHex("#FF8F8F"),
+        backgroundColor: Colors.red[100],
         body: pos > 0 ? setCalendar() : setCall(),
         floatingActionButton: FloatingActionButton(
           onPressed: () {
@@ -45,7 +41,7 @@ class _CalendarState extends State<Calendar> {
         decoration: BoxDecoration(
           border: Border.all(color: Colors.white, width: 2),
           borderRadius: BorderRadius.circular(25),
-          color: helper.getColorFromHex("#FF8F8F"),
+          color: Color(0x16748431),
         ),
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.width,
@@ -54,7 +50,7 @@ class _CalendarState extends State<Calendar> {
           child: SfCalendar(
             view: CalendarView.month,
             showNavigationArrow: true,
-            cellBorderColor: helper.getColorFromHex("#FF8F8F"),
+            cellBorderColor: Colors.red[100],
             onTap: (CalendarTapDetails details) {
               DateTime date = details.date;
               if (date.toString().substring(5, 10) == "12-12") {
@@ -77,7 +73,7 @@ class _CalendarState extends State<Calendar> {
         decoration: BoxDecoration(
           border: Border.all(color: Colors.white, width: 2),
           borderRadius: BorderRadius.circular(25),
-          color: helper.getColorFromHex("#FF8F8F"),
+          color: Color(0x16748431),
         ),
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.width,

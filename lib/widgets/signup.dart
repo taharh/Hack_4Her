@@ -49,7 +49,7 @@ class _SignUpPageState extends State<SignUpPage> {
                           style: TextStyle(
                               fontSize: 32.0,
                               fontWeight: FontWeight.bold,
-                              color: _getColorFromHex("#FF8F8F"),)),
+                              color: Colors.red[300],)),
                       SizedBox(height: 70.0),
                       TextFieldWidget("Email"),
                       SizedBox(height: 20.0),
@@ -78,12 +78,3 @@ class _SignUpPageState extends State<SignUpPage> {
   }
 }
 
-Color _getColorFromHex(String hexColor) {
-  hexColor = hexColor.replaceAll("#", "");
-  if (hexColor.length == 6) {
-    hexColor = "FF" + hexColor;
-  }
-  if (hexColor.length == 8) {
-    return Color(int.parse("0x$hexColor"));
-  }
-}

@@ -20,8 +20,8 @@ class _ButtonBuilderState extends State<ButtonBuilder> {
           end:
               Alignment(0.8, 0.0), // 10% of the width, so there are ten blinds.
           colors: [
-            _getColorFromHex("#FF8F8F"),
-            _getColorFromHex("#FFB57D"),
+            Colors.red[300],
+            Colors.red[100],
           ],
           ),
         ),
@@ -32,12 +32,3 @@ class _ButtonBuilderState extends State<ButtonBuilder> {
   }
 }
 
-Color _getColorFromHex(String hexColor) {
-  hexColor = hexColor.replaceAll("#", "");
-  if (hexColor.length == 6) {
-    hexColor = "FF" + hexColor;
-  }
-  if (hexColor.length == 8) {
-    return Color(int.parse("0x$hexColor"));
-  }
-}

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:hack_her/widgets/textfield.dart';
 import 'package:hack_her/widgets/button.dart';
-import 'package:hack_her/main.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:hack_her/menu.dart';
 
 class SigninPage extends StatefulWidget {
   @override
@@ -28,7 +28,7 @@ class _SigninPageState extends State<SigninPage> {
               style: TextStyle(
                   fontSize: 32.0,
                   fontWeight: FontWeight.bold,
-                  color: _getColorFromHex("#FF8F8F"))),
+                  color: Colors.red[300])),
           SizedBox(height: 70.0),
           TextFieldWidget("Email"),
           SizedBox(height: 20.0),
@@ -46,7 +46,12 @@ class _SigninPageState extends State<SigninPage> {
             ),
           ),
           SizedBox(height: 40.0),
-          ButtonBuilder("Sign-In"),
+          InkWell(
+            onTap: (){
+              Navigator.push(context,MaterialPageRoute(
+                        builder: (context) => Menu()));
+            },
+            child: ButtonBuilder("Sign-In")),
           SizedBox(height: 10.0),
           Container(
             child: Center(
@@ -78,12 +83,3 @@ class _SigninPageState extends State<SigninPage> {
   }
 }
 
-Color _getColorFromHex(String hexColor) {
-  hexColor = hexColor.replaceAll("#", "");
-  if (hexColor.length == 6) {
-    hexColor = "FF" + hexColor;
-  }
-  if (hexColor.length == 8) {
-    return Color(int.parse("0x$hexColor"));
-  }
-}
