@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:hack_her/info.dart';
+import 'package:hack_her/widgets/button-arrow.dart';
 
 class Menu extends StatelessWidget {
   @override
@@ -50,7 +52,8 @@ class Menu extends StatelessWidget {
                       Container(
                         width: MediaQuery.of(context).size.width / 2,
                         child: Text(
-                          "Welcome back foulen",
+                          "عسلامة أميرة",
+                          textAlign: TextAlign.right,
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                             color: Colors.white,
@@ -74,7 +77,7 @@ class Menu extends StatelessWidget {
             child: Container(
               padding: EdgeInsets.all(2),
               width: MediaQuery.of(context).size.width - 20,
-              height: MediaQuery.of(context).size.height ,
+              height: MediaQuery.of(context).size.height,
               child: SingleChildScrollView(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -94,7 +97,8 @@ class Menu extends StatelessWidget {
                               Container(
                                 width: MediaQuery.of(context).size.width / 2,
                                 child: Text(
-                                  "Finish our forum for more help!",
+                                  "إخدم الأسئلة بش نجموا نعاونوك",
+                                  textAlign: TextAlign.right,
                                   style: TextStyle(
                                       fontSize: 18,
                                       fontWeight: FontWeight.bold,
@@ -104,177 +108,94 @@ class Menu extends StatelessWidget {
                               SizedBox(
                                 height: 10,
                               ),
-                              Container(
-                                padding: EdgeInsets.all(10),
-                                width: MediaQuery.of(context).size.width / 2,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(15),
-                                  color: Colors.red[200],
-                                ),
-                                child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceEvenly,
-                                  children: [
-                                    Text(
-                                      "Begin",
-                                      style: TextStyle(
-                                        color: Colors.white,
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                    ),
-                                    Icon(
-                                      Icons.arrow_forward,
-                                      color: Colors.white,
-                                    ),
-                                  ],
-                                ),
-                              )
-                            ],
+                              ButtonArrow("إبدأ الأن",Colors.red[200]),
+                              ],
                           ),
                           Image.asset("images/icon.png", width: 80),
                         ],
                       ),
                     ),
-                    SizedBox(height: 10,),
-                    Container(
-                      padding: EdgeInsets.all(20),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20),
-                        color: Colors.red[100],
-                      ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Image.asset(
-                            "images/icon.png",
-                            width: 50,
-                          ),
-                          Container(
-                            alignment: Alignment.topLeft,
-                            width: MediaQuery.of(context).size.width / 3 + 80,
-                            child: Column(
-                              children: [
-                                Text(
-                                  "Evidence",
-                                  style: TextStyle(
-                                      fontSize: 18,
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.blueGrey[800]),
-                                ),
-                                Text(
-                                  "Collect your evidence in a safe place!",
-                                  style: TextStyle(
-                                      fontSize: 15, color: Colors.red[200]),
-                                ),
-                              ],
-                            ),
-                          ),
-                          Container(
-                            padding: EdgeInsets.all(5),
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(30),
-                              color: Colors.pink[50],
-                            ),
-                            child: Icon(Icons.arrow_forward_ios),
-                          )
-                        ],
-                      ),
+                    SizedBox(
+                      height: 10,
                     ),
-                    SizedBox(height: 10,),
-                    Container(
-                      padding: EdgeInsets.all(20),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20),
-                        color: Colors.red[100],
-                      ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Image.asset(
-                            "images/icon.png",
-                            width: 50,
-                          ),
-                          Container(
-                            alignment: Alignment.topLeft,
-                            width: MediaQuery.of(context).size.width / 3 + 80,
-                            child: Column(
-                              children: [
-                                Text(
-                                  "Evidence",
-                                  style: TextStyle(
-                                      fontSize: 18,
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.blueGrey[800]),
-                                ),
-                                Text(
-                                  "Collect your evidence in a safe place!",
-                                  style: TextStyle(
-                                      fontSize: 15, color: Colors.red[200]),
-                                ),
-                              ],
-                            ),
-                          ),
-                          Container(
-                            padding: EdgeInsets.all(5),
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(30),
-                              color: Colors.pink[50],
-                            ),
-                            child: Icon(Icons.arrow_forward_ios),
-                          )
-                        ],
-                      ),
+                    InkWell(
+                        child: item(context, "images/icon.png", "دلائل",
+                            "إجمعي الدلائل")),
+                    SizedBox(
+                      height: 10,
                     ),
-                    SizedBox(height: 10,),
-                    Container(
-                      padding: EdgeInsets.all(20),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20),
-                        color: Colors.red[100],
-                      ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Image.asset(
-                            "images/icon.png",
-                            width: 50,
-                          ),
-                          Container(
-                            alignment: Alignment.topLeft,
-                            width: MediaQuery.of(context).size.width / 3 + 80,
-                            child: Column(
-                              children: [
-                                Text(
-                                  "Evidence",
-                                  style: TextStyle(
-                                      fontSize: 18,
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.blueGrey[800]),
-                                ),
-                                Text(
-                                  "Collect your evidence in a safe place!",
-                                  style: TextStyle(
-                                      fontSize: 15, color: Colors.red[200]),
-                                ),
-                              ],
-                            ),
-                          ),
-                          Container(
-                            padding: EdgeInsets.all(5),
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(30),
-                              color: Colors.pink[50],
-                            ),
-                            child: Icon(Icons.arrow_forward_ios),
-                          )
-                        ],
-                      ),
+                    InkWell(
+                        child: item(context, "images/icon.png", "أسئلني",
+                            "تحب تاخو فكرة عالشكاية و طرقها؟")),
+                    SizedBox(
+                      height: 10,
                     ),
+                    InkWell(
+                        onTap: () {
+                          Navigator.push(context,
+                              MaterialPageRoute(builder: (context) => Info()));
+                        },
+                        child: item(context, "images/icon.png", "معلومات",
+                            "تحب تاخو نومروا طبيب ولا محامي ؟")),
                     SizedBox(height: 10),
                   ],
                 ),
               ),
             ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget item(
+      BuildContext context, String img, String title, String description) {
+    return Container(
+      padding: EdgeInsets.all(10),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(20),
+        color: Colors.red[100],
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          Container(
+            padding: EdgeInsets.all(5),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(30),
+              color: Colors.pink[50],
+            ),
+            child: Icon(Icons.arrow_back_ios),
+          ),
+          Container(
+            width: MediaQuery.of(context).size.width / 3 + 80,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                Text(
+                  title,
+                  textAlign: TextAlign.justify,
+                  style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.blueGrey[800]),
+                ),
+                Text(
+                  description,
+                  textAlign: TextAlign.right,
+                  style: TextStyle(
+                    fontSize: 14,
+                    color: Colors.red[200],
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Image.asset(
+            "images/icon.png",
+            width: 40,
           ),
         ],
       ),

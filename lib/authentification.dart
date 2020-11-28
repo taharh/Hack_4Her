@@ -34,14 +34,15 @@ class _AuthentificationState extends State<Authentification> {
           items: [
             BottomNavigationBarItem(
                 icon: new Icon(
+                  
+                  Icons.login,
+                ),
+                title: Text("Sign-In")),
+            BottomNavigationBarItem(
+                icon: new Icon(
                   Icons.unsubscribe_rounded,
                 ),
                 title: Text("Sign-Up")),
-            BottomNavigationBarItem(
-                icon: new Icon(
-                  Icons.login,
-                ),
-                title: Text("SignIn")),
           ],
         ),
         body: Stack(
@@ -53,8 +54,8 @@ class _AuthentificationState extends State<Authentification> {
                   setState(() => _selectedIndex = index);
                 },
                 children: <Widget>[
-                  SignUpPage(),
                   SigninPage(),
+                  SignUpPage(),
                 ],
               ),
             ),
