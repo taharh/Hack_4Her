@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:hack_her/person.dart';
-
-
 // ignore: must_be_immutable
 class Lista extends StatelessWidget {
   String title;

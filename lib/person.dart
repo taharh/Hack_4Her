@@ -82,14 +82,14 @@ class Person extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.end,
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
-                          TextRight("الأدريسة",Colors.black),
-                          TextRight("313 حي الأندلس سوسة",Colors.black54),
+                          TextRight("الأدريسة",Colors.black,20),
+                          TextRight("313 حي الأندلس سوسة",Colors.black54,20),
                         ],
                       ),
                     ),
                   ],
                 ),
-                Image.asset("images/icon.png", width: 150),
+                Image.asset("images/icon.png", width: MediaQuery.of(context).size.width/3),
               ],
             ),
             Container(
@@ -109,8 +109,8 @@ class Person extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
-                        TextRight("منيرة الجمني",Colors.black),
-                        TextRight("طبيبة من عام الثورة و داويت بارشا نساء",Colors.red[200]),
+                        TextRight("منيرة الجمني",Colors.black,20),
+                        TextRight("طبيبة من عام الثورة و داويت بارشا نساء",Colors.red[200],15),
                       ],
                     ),
                   ),

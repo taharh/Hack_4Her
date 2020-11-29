@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:hack_her/info.dart';
 import 'package:hack_her/widgets/button-arrow.dart';
+import 'package:hack_her/chatbot.dart';
+import 'package:hack_her/quiz.dart';
 
 class Menu extends StatelessWidget {
   @override
@@ -108,7 +110,12 @@ class Menu extends StatelessWidget {
                               SizedBox(
                                 height: 10,
                               ),
-                              ButtonArrow("إبدأ الأن",Colors.red[200]),
+                              InkWell(
+                                onTap: (){
+                                  Navigator.push(context,
+                              MaterialPageRoute(builder: (context) => Quiz()));
+                                },
+                                child: ButtonArrow("إبدأ الأن",Colors.red[200])),
                               ],
                           ),
                           Image.asset("images/icon.png", width: 80),
@@ -125,6 +132,10 @@ class Menu extends StatelessWidget {
                       height: 10,
                     ),
                     InkWell(
+                      onTap: (){
+                        Navigator.push(context,
+                              MaterialPageRoute(builder: (context) => ChatBot()));
+                      },
                         child: item(context, "images/icon.png", "أسئلني",
                             "تحب تاخو فكرة عالشكاية و طرقها؟")),
                     SizedBox(
