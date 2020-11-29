@@ -3,8 +3,9 @@ import 'package:flutter/material.dart';
 class TextCenter extends StatelessWidget {
   String label;
   Color color;
+  double size;
 
-  TextCenter(this.label, this.color);
+  TextCenter(this.label, this.color,this.size);
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +14,7 @@ class TextCenter extends StatelessWidget {
       textAlign: TextAlign.center,
       style: TextStyle(
         color: color,
-        fontSize: 20,
+        fontSize: size,
         fontWeight: FontWeight.bold,
       ),
     );

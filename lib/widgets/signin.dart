@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hack_her/widgets/textfield.dart';
+import 'package:hack_her/widgets/text-center.dart';
 import 'package:hack_her/widgets/button.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:hack_her/menu.dart';
@@ -11,6 +11,16 @@ class SigninPage extends StatefulWidget {
 
 //a function that returns the whole widgets of the interface
 class _SigninPageState extends State<SigninPage> {
+  bool _isHidden = true;
+  String phone = "";
+  String pwd = "";
+
+  void _toggleVisibility() {
+    setState(() {
+      _isHidden = !_isHidden;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -24,62 +34,91 @@ class _SigninPageState extends State<SigninPage> {
           SizedBox(
             height: 80,
           ),
-          Text('Sign-In',
-              style: TextStyle(
-                  fontSize: 32.0,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.red[300])),
+          TextCenter("تسجيل دخول", Colors.red[300], 32.0),
           SizedBox(height: 70.0),
-          TextFieldWidget("Email"),
+          TextField(
+            onChanged: (text) {
+              phone = text;
+            },
+            textAlign: TextAlign.right,
+            decoration: InputDecoration(
+              hintText: "رقم الهاتف",
+              hintStyle: TextStyle(
+                color: Colors.grey,
+                fontSize: 16.0,
+              ),
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(20.0),
+              ),
+              suffixIcon: Icon(Icons.phone),
+            ),
+          ),
           SizedBox(height: 20.0),
-          TextFieldWidget("Password"),
+          TextField(
+            onChanged: (text) {
+              pwd = text;
+            },
+            textAlign: TextAlign.right,
+            decoration: InputDecoration(
+              hintText: "كلمة السر",
+              hintStyle: TextStyle(
+                color: Colors.grey,
+                fontSize: 16.0,
+              ),
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(20.0),
+              ),
+              suffixIcon: Icon(Icons.lock),
+              prefixIcon: IconButton(
+                onPressed: _toggleVisibility,
+                icon: _isHidden
+                    ? Icon(Icons.visibility_off)
+                    : Icon(Icons.visibility),
+              ),
+            ),
+            obscureText: _isHidden,
+          ),
           SizedBox(height: 5.0),
           Container(
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.end,
+              mainAxisAlignment: MainAxisAlignment.start,
               children: <Widget>[
-                Text("Forgotten Password ?",
-                    style: TextStyle(
-                      color: Theme.of(context).primaryColor)
-                    ),
+                InkWell(
+                  onTap: () {
+                    Fluttertoast.showToast(
+                        msg: "الله غالب",
+                        toastLength: Toast.LENGTH_SHORT,
+                        gravity: ToastGravity.BOTTOM,
+                        textColor: Colors.white,
+                        backgroundColor: Colors.red[100],
+                        fontSize: 18.0);
+                  },
+                  child: Text("نسيتها ؟",
+                      style: TextStyle(color: Theme.of(context).primaryColor)),
+                ),
               ],
             ),
           ),
           SizedBox(height: 40.0),
           InkWell(
-            onTap: (){
-              Navigator.push(context,MaterialPageRoute(
-                        builder: (context) => Menu()));
-            },
-            child: ButtonBuilder("Sign-In")),
+              onTap: () {
+                if (phone.isEmpty || pwd.isEmpty) {
+                  Fluttertoast.showToast(
+                        msg: "معطياتك فارغة",
+                        toastLength: Toast.LENGTH_SHORT,
+                        gravity: ToastGravity.BOTTOM,
+                        textColor: Colors.white,
+                        backgroundColor: Colors.red[100],
+                        fontSize: 18.0);
+                } else {
+                  Navigator.push(
+                      context, MaterialPageRoute(builder: (context) => Menu()));
+                }
+              },
+              child: ButtonBuilder("أدخل")),
           SizedBox(height: 10.0),
-          Container(
-            child: Center(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  Text("Don't have an accout?"),
-                  SizedBox(width: 10.0),
-                  new GestureDetector(
-                    onTap: () {
-                      Fluttertoast.showToast(
-                        msg: 'Please Sign Up',
-                      );
-                      
-                      //Navigator.push(context,MaterialPageRoute(builder: (context) => SignupPage()));
-                    },
-                    child: new Text("Sign-Up",
-                        style: TextStyle(
-                          color: Theme.of(context).primaryColor,
-                        )),
-                  ),
-                ],
-              ),
-            ),
-          ),
         ],
       ),
     ));
   }
 }
-
