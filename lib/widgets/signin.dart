@@ -3,6 +3,9 @@ import 'package:hack_her/widgets/text-center.dart';
 import 'package:hack_her/widgets/button.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:hack_her/menu.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+
+final FirebaseAuth _auth = FirebaseAuth.instance;
 
 class SigninPage extends StatefulWidget {
   @override
@@ -21,6 +24,28 @@ class _SigninPageState extends State<SigninPage> {
     });
   }
 
+  final TextEditingController _emailController = TextEditingController();
+  bool _success;
+  String _userEmail;
+
+  void _signInWithEmailAndPassword() async {
+    final FirebaseUser user = (await _auth.signInWithEmailAndPassword(
+      email: _emailController.text,
+      password: pwd,
+    )).user;
+
+    if (user != null) {
+      setState(() {
+        _success = true;
+        _userEmail = user.email;
+      });
+    } else {
+      setState(() {
+        _success = false;
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -36,7 +61,17 @@ class _SigninPageState extends State<SigninPage> {
           ),
           TextCenter("تسجيل دخول", Colors.red[300], 32.0),
           SizedBox(height: 70.0),
-          TextField(
+          TextFormField(
+            controller: _emailController,
+            decoration: const InputDecoration(labelText: 'Email'),
+            validator: (String value) {
+              if (value.isEmpty) {
+                return 'Please enter some text';
+              }
+              return null;
+            },
+          ),
+          /*TextField(
             onChanged: (text) {
               phone = text;
             },
@@ -52,7 +87,7 @@ class _SigninPageState extends State<SigninPage> {
               ),
               suffixIcon: Icon(Icons.phone),
             ),
-          ),
+          ),*/
           SizedBox(height: 20.0),
           TextField(
             onChanged: (text) {
@@ -102,7 +137,7 @@ class _SigninPageState extends State<SigninPage> {
           SizedBox(height: 40.0),
           InkWell(
               onTap: () {
-                if (phone.isEmpty || pwd.isEmpty) {
+                if (_emailController.text.isEmpty || pwd.isEmpty) {
                   Fluttertoast.showToast(
                         msg: "معطياتك فارغة",
                         toastLength: Toast.LENGTH_SHORT,
@@ -111,9 +146,11 @@ class _SigninPageState extends State<SigninPage> {
                         backgroundColor: Colors.red[100],
                         fontSize: 18.0);
                 } else {
+                  _signInWithEmailAndPassword();
                   Navigator.push(
-                      context, MaterialPageRoute(builder: (context) => Menu()));
+                      context, MaterialPageRoute(builder: (context) => Menu(_userEmail)));
                 }
+
               },
               child: ButtonBuilder("أدخل")),
           SizedBox(height: 10.0),
