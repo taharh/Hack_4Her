@@ -121,7 +121,7 @@ class _ChatBotState extends State<ChatBot> {
                           borderRadius: BorderRadius.circular(20),
                           color: Colors.white70,
                         ),
-                        child: TextCenter("الشكاية", Colors.red),
+                        child: TextCenter("الشكاية", Colors.red,20),
                       ),
                     ),
                     InkWell(
@@ -142,7 +142,7 @@ class _ChatBotState extends State<ChatBot> {
                           borderRadius: BorderRadius.circular(20),
                           color: Colors.white70,
                         ),
-                        child: TextCenter("التوكيل", Colors.red),
+                        child: TextCenter("التوكيل", Colors.red,20),
                       ),
                     ),
                     InkWell(
@@ -163,7 +163,7 @@ class _ChatBotState extends State<ChatBot> {
                           borderRadius: BorderRadius.circular(20),
                           color: Colors.white70,
                         ),
-                        child: TextCenter("أنواع العنف", Colors.red),
+                        child: TextCenter("أنواع العنف", Colors.red,20),
                       ),
                     ),
                   ],

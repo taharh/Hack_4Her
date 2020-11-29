@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hack_her/widgets/button.dart';
-import 'package:hack_her/widgets/textfield.dart';
+import 'package:hack_her/widgets/text-center.dart';
 
 void main() => runApp(SignupPage());
 
@@ -20,6 +20,11 @@ class SignUpPage extends StatefulWidget {
 
 class _SignUpPageState extends State<SignUpPage> {
   bool _isHidden = true;
+  String phone = "";
+  String pwd = "";
+  String pwd2 = "";
+  String emergencyPhone = "";
+  String date;
 
   void _toggleVisibility() {
     setState(() {
@@ -39,27 +44,125 @@ class _SignUpPageState extends State<SignUpPage> {
           children: <Widget>[
             new Container(
                 padding: EdgeInsets.all(50),
-                child: Center(
-                  child: new Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      SizedBox(height: 80.0),
-                      Text('Sign-Up',
-                          style: TextStyle(
-                              fontSize: 32.0,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.red[300],)),
-                      SizedBox(height: 70.0),
-                      TextFieldWidget("Email"),
-                      SizedBox(height: 20.0),
-                      TextFieldWidget("Password"),
-                      SizedBox(height: 20.0),
-                      TextFieldWidget("Confirm Password"),
-                      SizedBox(height: 50.0),
-                      ButtonBuilder("Sign-Up"),
-                    ],
-                  ),
+                child: new Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: <Widget>[
+                    SizedBox(height: 80.0),
+                    TextCenter("تسجيل حساب", Colors.red[300], 32.0),
+                    SizedBox(height: 30.0),
+                    TextField(
+                      onChanged: (text) {
+                        phone = text;
+                      },
+                      textAlign: TextAlign.right,
+                      decoration: InputDecoration(
+                        hintText: "رقم الهاتف",
+                        hintStyle: TextStyle(
+                          color: Colors.grey,
+                          fontSize: 16.0,
+                        ),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(20.0),
+                        ),
+                        suffixIcon: Icon(Icons.phone),
+                      ),
+                    ),
+                    SizedBox(height: 20.0),
+                    TextField(
+                      onChanged: (text) {
+                        pwd = text;
+                      },
+                      textAlign: TextAlign.right,
+                      decoration: InputDecoration(
+                        hintText: "كلمة السر",
+                        hintStyle: TextStyle(
+                          color: Colors.grey,
+                          fontSize: 16.0,
+                        ),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(20.0),
+                        ),
+                        suffixIcon: Icon(Icons.lock),
+                        prefixIcon: IconButton(
+                          onPressed: _toggleVisibility,
+                          icon: _isHidden
+                              ? Icon(Icons.visibility_off)
+                              : Icon(Icons.visibility),
+                        ),
+                      ),
+                      obscureText: _isHidden,
+                    ),
+                    SizedBox(height: 20.0),
+                    TextField(
+                      onChanged: (text) {
+                        pwd2 = text;
+                      },
+                      textAlign: TextAlign.right,
+                      decoration: InputDecoration(
+                        hintText: "عاود كلمة السر",
+                        hintStyle: TextStyle(
+                          color: Colors.grey,
+                          fontSize: 16.0,
+                        ),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(20.0),
+                        ),
+                        suffixIcon: Icon(Icons.lock),
+                        prefixIcon: IconButton(
+                          onPressed: _toggleVisibility,
+                          icon: _isHidden
+                              ? Icon(Icons.visibility_off)
+                              : Icon(Icons.visibility),
+                        ),
+                      ),
+                      obscureText: _isHidden,
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    TextField(
+                      onChanged: (text) {
+                        emergencyPhone = text;
+                      },
+                      textAlign: TextAlign.right,
+                      decoration: InputDecoration(
+                        hintText: "نومرو إستعجالي",
+                        hintStyle: TextStyle(
+                          color: Colors.grey,
+                          fontSize: 16.0,
+                        ),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(20.0),
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    TextField(
+                      onChanged: (text) {
+                        date = text;
+                      },
+                      textAlign: TextAlign.right,
+                      decoration: InputDecoration(
+                        hintText: "وقتاه مولودة؟",
+                        hintStyle: TextStyle(
+                          color: Colors.grey,
+                          fontSize: 16.0,
+                        ),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(20.0),
+                        ),
+                      ),
+                    ),
+                    SizedBox(height: 20.0),
+                    InkWell(
+                      onTap: (){
+                        
+                      },
+                      child: ButtonBuilder("سجل")),
+                  ],
                 )),
           ],
         ),
@@ -77,4 +180,3 @@ class _SignUpPageState extends State<SignUpPage> {
     );
   }
 }
-

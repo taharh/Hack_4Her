@@ -37,12 +37,12 @@ class _AuthentificationState extends State<Authentification> {
                   
                   Icons.login,
                 ),
-                title: Text("Sign-In")),
+                title: Text("تسجيل دخول")),
             BottomNavigationBarItem(
                 icon: new Icon(
                   Icons.unsubscribe_rounded,
                 ),
-                title: Text("Sign-Up")),
+                title: Text("تسجيل حساب")),
           ],
         ),
         body: Stack(
