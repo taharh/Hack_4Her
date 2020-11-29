@@ -19,36 +19,35 @@ class _CalendarState extends State<Calendar> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Scaffold(
+    return Scaffold(
+      backgroundColor: Colors.red[50],
+      body: Stack(
+        children: [
+          Positioned(
+              child: Container(
+            height: MediaQuery.of(context).size.height,
+            width: MediaQuery.of(context).size.width,
+          )),
+          Positioned(child: Image.asset("images/header.png",)),
+          Positioned(
+              top: MediaQuery.of(context).size.height / 4,
+              left: 15,
+              child: Container(
+                width: MediaQuery.of(context).size.width-30,
+                child: pos > 0 ? setCalendar() : setCall(),
+              )),
+        ],
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.endTop,
+      floatingActionButton: FloatingActionButton(
+        elevation: 0,
         backgroundColor: Colors.red[50],
-        body: Stack(
-          children: [
-            Positioned(
-                child: Container(
-              height: MediaQuery.of(context).size.height,
-              width: MediaQuery.of(context).size.width,
-            )),
-            Positioned(child: Image.asset("images/header.png")),
-            Positioned(
-                top: MediaQuery.of(context).size.height / 4,
-                left: 8,
-                child: Container(
-                  width: MediaQuery.of(context).size.width-15,
-                  child: pos > 0 ? setCalendar() : setCall(),
-                )),
-          ],
-        ),
-        floatingActionButtonLocation: FloatingActionButtonLocation.endTop,
-        floatingActionButton: FloatingActionButton(
-          backgroundColor: Colors.red[400],
-          onPressed: () {
-            switchi();
-          },
-          child: Icon(
-            Icons.notification_important,
-            color: Colors.white,
-          ),
+        onPressed: () {
+          switchi();
+        },
+        child: Icon(
+          Icons.notification_important,
+          color: Colors.white,
         ),
       ),
     );

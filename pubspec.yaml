@@ -54,6 +54,18 @@ flutter:
   assets:
      - images/icon.png
      - images/header.png
+     - images/b1.png
+     - images/b2.png
+     - images/b3.png
+     - images/b4.png
+     - images/b5.png
+     - images/b6.png
+     - images/chatbot.png
+     - images/evidence.png
+     - images/file.png
+     - images/group.png
+     - images/illu1.png
+     - images/illu2.png
      - assets/services.json
 
   # An image asset can refer to one or more resolution-specific "variants", see

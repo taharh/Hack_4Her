@@ -66,7 +66,7 @@ class _SignUpPageState extends State<SignUpPage> {
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(20.0),
                         ),
-                        suffixIcon: Icon(Icons.phone),
+                        suffixIcon: Icon(Icons.email),
                       ),
                     ),
                     SizedBox(height: 10.0),

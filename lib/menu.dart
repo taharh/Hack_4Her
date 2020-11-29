@@ -16,6 +16,10 @@ class Menu extends StatelessWidget {
             width: MediaQuery.of(context).size.width,
           )),
           Positioned(
+              child: Image.asset(
+            "images/header.png",
+          )),
+          Positioned(
             child: Container(
               padding: EdgeInsets.only(top: 40, right: 10, left: 10),
               width: MediaQuery.of(context).size.width,
@@ -27,7 +31,7 @@ class Menu extends StatelessWidget {
                   gradient: LinearGradient(
                       begin: Alignment.topRight,
                       end: Alignment.bottomLeft,
-                      colors: [Colors.blue, Colors.red])),
+                      colors: [Colors.red[200], Colors.red[200]])),
               child: Column(
                 children: [
                   Container(
@@ -48,26 +52,17 @@ class Menu extends StatelessWidget {
                   SizedBox(
                     height: 25,
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      Container(
-                        width: MediaQuery.of(context).size.width / 2,
-                        child: Text(
-                          "عسلامة أميرة",
-                          textAlign: TextAlign.right,
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white,
-                            fontSize: 30,
-                          ),
-                        ),
+                  Container(
+                    width: MediaQuery.of(context).size.width / 2,
+                    child: Text(
+                      "عسلامة أميرة",
+                      textAlign: TextAlign.right,
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                        fontSize: 30,
                       ),
-                      Image.asset(
-                        "images/icon.png",
-                        width: 150,
-                      ),
-                    ],
+                    ),
                   ),
                 ],
               ),
@@ -111,14 +106,17 @@ class Menu extends StatelessWidget {
                                 height: 10,
                               ),
                               InkWell(
-                                onTap: (){
-                                  Navigator.push(context,
-                              MaterialPageRoute(builder: (context) => Quiz()));
-                                },
-                                child: ButtonArrow("إبدأ الأن",Colors.red[200])),
-                              ],
+                                  onTap: () {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) => Quiz()));
+                                  },
+                                  child: ButtonArrow(
+                                      "إبدأ الأن", Colors.red[200])),
+                            ],
                           ),
-                          Image.asset("images/icon.png", width: 80),
+                          Image.asset("images/illu2.png", width:120),
                         ],
                       ),
                     ),
@@ -126,17 +124,19 @@ class Menu extends StatelessWidget {
                       height: 10,
                     ),
                     InkWell(
-                        child: item(context, "images/icon.png", "دلائل",
+                        child: item(context, "images/evidence.png", "دلائل",
                             "إجمعي الدلائل")),
                     SizedBox(
                       height: 10,
                     ),
                     InkWell(
-                      onTap: (){
-                        Navigator.push(context,
-                              MaterialPageRoute(builder: (context) => ChatBot()));
-                      },
-                        child: item(context, "images/icon.png", "أسئلني",
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => ChatBot()));
+                        },
+                        child: item(context, "images/chatbot.png", "أسئلني",
                             "تحب تاخو فكرة عالشكاية و طرقها؟")),
                     SizedBox(
                       height: 10,
@@ -146,8 +146,8 @@ class Menu extends StatelessWidget {
                           Navigator.push(context,
                               MaterialPageRoute(builder: (context) => Info()));
                         },
-                        child: item(context, "images/icon.png", "معلومات",
-                            "تحب تاخو نومروا طبيب ولا محامي ؟")),
+                        child: item(context, "images/group.png", "معلومات",
+                            "تحب تاخو نومرو طبيب ولا محامي ؟")),
                     SizedBox(height: 10),
                   ],
                 ),
@@ -205,7 +205,7 @@ class Menu extends StatelessWidget {
             ),
           ),
           Image.asset(
-            "images/icon.png",
+            img,
             width: 40,
           ),
         ],
