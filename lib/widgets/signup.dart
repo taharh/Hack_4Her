@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:hack_her/widgets/button.dart';
 import 'package:hack_her/widgets/text-center.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_dynamic_links/firebase_dynamic_links.dart';
+
+final FirebaseAuth _auth = FirebaseAuth.instance;
 
 void main() => runApp(SignupPage());
 
@@ -26,10 +30,36 @@ class _SignUpPageState extends State<SignUpPage> {
   String emergencyPhone = "";
   String date;
 
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+  bool _success;
+  String _userEmail;
+
   void _toggleVisibility() {
     setState(() {
       _isHidden = !_isHidden;
     });
+  }
+
+  void _register() async {
+    print("xxxxxxxxxxxxxxx");
+    final FirebaseUser user = (await
+    _auth.createUserWithEmailAndPassword(
+      email: _emailController.text,
+      password: pwd,
+    )
+    ).user;
+    if (user != null) {
+      setState(() {
+        _success = true;
+        _userEmail = user.email;
+      });
+    } else {
+      setState(() {
+        _success = true;
+      });
+    }
   }
 
   @override
@@ -51,7 +81,17 @@ class _SignUpPageState extends State<SignUpPage> {
                     SizedBox(height: 80.0),
                     TextCenter("تسجيل حساب", Colors.red[300], 32.0),
                     SizedBox(height: 30.0),
-                    TextField(
+                    TextFormField(
+                      controller: _emailController,
+                      decoration: const InputDecoration(labelText: 'Email'),
+                      validator: (String value) {
+                        if (value.isEmpty) {
+                          return 'Please enter some text';
+                        }
+                        return null;
+                      },
+                    ),
+                    /*TextField(
                       onChanged: (text) {
                         phone = text;
                       },
@@ -67,7 +107,7 @@ class _SignUpPageState extends State<SignUpPage> {
                         ),
                         suffixIcon: Icon(Icons.phone),
                       ),
-                    ),
+                    ),*/
                     SizedBox(height: 20.0),
                     TextField(
                       onChanged: (text) {
@@ -93,6 +133,17 @@ class _SignUpPageState extends State<SignUpPage> {
                       ),
                       obscureText: _isHidden,
                     ),
+                    /*TextFormField(
+                      controller: _passwordController,
+                      decoration: const InputDecoration(labelText:
+                      'Password'),
+                      validator: (String value) {
+                        if (value.isEmpty) {
+                          return 'Please enter some text';
+                        }
+                        return null;
+                      },
+                    ),*/
                     SizedBox(height: 20.0),
                     TextField(
                       onChanged: (text) {
@@ -158,7 +209,8 @@ class _SignUpPageState extends State<SignUpPage> {
                     ),
                     SizedBox(height: 20.0),
                     InkWell(
-                      onTap: (){
+                      onTap: () async {
+                        _register();
                         
                       },
                       child: ButtonBuilder("سجل")),
@@ -170,6 +222,7 @@ class _SignUpPageState extends State<SignUpPage> {
 
       //////////////////////////////////////////////
     );
+
   }
 
   Widget buildText(String s) {
@@ -180,3 +233,5 @@ class _SignUpPageState extends State<SignUpPage> {
     );
   }
 }
+
+

@@ -5,6 +5,13 @@ import 'package:hack_her/chatbot.dart';
 import 'package:hack_her/quiz.dart';
 
 class Menu extends StatelessWidget {
+
+  String email;
+
+  Menu(this.email);
+
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -54,7 +61,7 @@ class Menu extends StatelessWidget {
                       Container(
                         width: MediaQuery.of(context).size.width / 2,
                         child: Text(
-                          "عسلامة أميرة",
+                          "عسلامة $email",
                           textAlign: TextAlign.right,
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
