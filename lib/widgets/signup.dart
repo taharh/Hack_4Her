@@ -20,6 +20,7 @@ class SignUpPage extends StatefulWidget {
 
 class _SignUpPageState extends State<SignUpPage> {
   bool _isHidden = true;
+  String email = "";
   String phone = "";
   String pwd = "";
   String pwd2 = "";
@@ -43,14 +44,32 @@ class _SignUpPageState extends State<SignUpPage> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             new Container(
-                padding: EdgeInsets.all(50),
+                padding: EdgeInsets.fromLTRB(50, 5, 50, 10),
                 child: new Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: <Widget>[
-                    SizedBox(height: 80.0),
+                    SizedBox(height: 40.0),
                     TextCenter("تسجيل حساب", Colors.red[300], 32.0),
                     SizedBox(height: 30.0),
+                    TextField(
+                      onChanged: (text) {
+                        email = text;
+                      },
+                      textAlign: TextAlign.right,
+                      decoration: InputDecoration(
+                        hintText: "بريد إلكتروني",
+                        hintStyle: TextStyle(
+                          color: Colors.grey,
+                          fontSize: 16.0,
+                        ),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(20.0),
+                        ),
+                        suffixIcon: Icon(Icons.phone),
+                      ),
+                    ),
+                    SizedBox(height: 10.0),
                     TextField(
                       onChanged: (text) {
                         phone = text;
@@ -68,7 +87,7 @@ class _SignUpPageState extends State<SignUpPage> {
                         suffixIcon: Icon(Icons.phone),
                       ),
                     ),
-                    SizedBox(height: 20.0),
+                    SizedBox(height: 10.0),
                     TextField(
                       onChanged: (text) {
                         pwd = text;
@@ -93,7 +112,7 @@ class _SignUpPageState extends State<SignUpPage> {
                       ),
                       obscureText: _isHidden,
                     ),
-                    SizedBox(height: 20.0),
+                    SizedBox(height: 10.0),
                     TextField(
                       onChanged: (text) {
                         pwd2 = text;
@@ -119,7 +138,7 @@ class _SignUpPageState extends State<SignUpPage> {
                       obscureText: _isHidden,
                     ),
                     SizedBox(
-                      height: 20,
+                      height: 10,
                     ),
                     TextField(
                       onChanged: (text) {
@@ -138,7 +157,7 @@ class _SignUpPageState extends State<SignUpPage> {
                       ),
                     ),
                     SizedBox(
-                      height: 20,
+                      height: 10,
                     ),
                     TextField(
                       onChanged: (text) {
@@ -156,12 +175,8 @@ class _SignUpPageState extends State<SignUpPage> {
                         ),
                       ),
                     ),
-                    SizedBox(height: 20.0),
-                    InkWell(
-                      onTap: (){
-                        
-                      },
-                      child: ButtonBuilder("سجل")),
+                    SizedBox(height: 10.0),
+                    InkWell(onTap: () {}, child: ButtonBuilder("سجل")),
                   ],
                 )),
           ],
