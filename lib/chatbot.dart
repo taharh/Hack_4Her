@@ -10,6 +10,7 @@ class ChatBot extends StatefulWidget {
 class _ChatBotState extends State<ChatBot> {
   final List<ChatMessage> _messages = <ChatMessage>[];
   final TextEditingController _textController = new TextEditingController();
+  String name = "المستعمل";
 
   Widget _buildTextComposer() {
     return new IconTheme(
@@ -51,7 +52,7 @@ class _ChatBotState extends State<ChatBot> {
     ChatMessage message = new ChatMessage(
       text: response.getMessage() ??
           new CardDialogflow(response.getListMessage()[0]).title,
-      name: "أميرة",
+      name: "تانيت",
       type: false,
     );
     setState(() {
@@ -63,7 +64,7 @@ class _ChatBotState extends State<ChatBot> {
     _textController.clear();
     ChatMessage message = new ChatMessage(
       text: text,
-      name: "أية",
+      name: name,
       type: true,
     );
     setState(() {
@@ -77,8 +78,8 @@ class _ChatBotState extends State<ChatBot> {
     return Scaffold(
       appBar: new AppBar(
         centerTitle: true,
-        title: new Text("أميرة"),
-        backgroundColor: Colors.red[400],
+        title: new Text("تانيت"),
+        backgroundColor: Colors.red[100],
       ),
       body: new Column(children: <Widget>[
         new Flexible(
@@ -106,14 +107,14 @@ class _ChatBotState extends State<ChatBot> {
                     InkWell(
                       onTap: () {
                         ChatMessage message = new ChatMessage(
-                          text: "How to report on violence against women?",
-                          name: "أية",
+                          text: "كيافش نجم نشكي؟",
+                          name: name,
                           type: true,
                         );
                         setState(() {
                           _messages.insert(0, message);
                         });
-                        Response("How to report on violence against women?");
+                        Response("كيافش نجم نشكي؟");
                       },
                       child: Container(
                         padding: EdgeInsets.all(10),
@@ -121,20 +122,20 @@ class _ChatBotState extends State<ChatBot> {
                           borderRadius: BorderRadius.circular(20),
                           color: Colors.white70,
                         ),
-                        child: TextCenter("الشكاية", Colors.red,20),
+                        child: TextCenter("الشكاية", Colors.black, 15),
                       ),
                     ),
                     InkWell(
                       onTap: () {
                         ChatMessage message = new ChatMessage(
-                          text: "How to assaign a procuration?",
-                          name: "أية",
+                          text: "كيفاه نعمل توكيل؟",
+                          name: name,
                           type: true,
                         );
                         setState(() {
                           _messages.insert(0, message);
                         });
-                        Response("How to assaign a procuration?");
+                        Response("كيفاه نعمل توكيل؟");
                       },
                       child: Container(
                         padding: EdgeInsets.all(10),
@@ -142,20 +143,20 @@ class _ChatBotState extends State<ChatBot> {
                           borderRadius: BorderRadius.circular(20),
                           color: Colors.white70,
                         ),
-                        child: TextCenter("التوكيل", Colors.red,20),
+                        child: TextCenter("التوكيل", Colors.black, 15),
                       ),
                     ),
                     InkWell(
                       onTap: () {
                         ChatMessage message = new ChatMessage(
-                          text: "What are the types of violence?",
-                          name: "أية",
+                          text: "شنوما أنواع العنف؟",
+                          name: name,
                           type: true,
                         );
                         setState(() {
                           _messages.insert(0, message);
                         });
-                        Response("What are the types of violence?");
+                        Response("شنوما أنواع العنف؟");
                       },
                       child: Container(
                         padding: EdgeInsets.all(10),
@@ -163,7 +164,28 @@ class _ChatBotState extends State<ChatBot> {
                           borderRadius: BorderRadius.circular(20),
                           color: Colors.white70,
                         ),
-                        child: TextCenter("أنواع العنف", Colors.red,20),
+                        child: TextCenter("أنواع العنف", Colors.black, 15),
+                      ),
+                    ),
+                    InkWell(
+                      onTap: () {
+                        ChatMessage message = new ChatMessage(
+                          text: "كيفاش نتصرف في الدلائل؟",
+                          name: name,
+                          type: true,
+                        );
+                        setState(() {
+                          _messages.insert(0, message);
+                        });
+                        Response("كيفاش نتصرف في الدلائل؟");
+                      },
+                      child: Container(
+                        padding: EdgeInsets.all(10),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20),
+                          color: Colors.white70,
+                        ),
+                        child: TextCenter("عندي دليل", Colors.black, 15),
                       ),
                     ),
                   ],
@@ -190,7 +212,7 @@ class ChatMessage extends StatelessWidget {
       new Container(
         margin: const EdgeInsets.only(right: 16.0),
         child: new CircleAvatar(
-          child: new Text('أ'),
+          child: new Text('ت'),
           backgroundColor: Colors.blue,
         ),
       ),

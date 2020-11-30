@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:hack_her/widgets/button.dart';
 import 'package:hack_her/widgets/text-center.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_dynamic_links/firebase_dynamic_links.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 final FirebaseAuth _auth = FirebaseAuth.instance;
 
@@ -44,13 +45,11 @@ class _SignUpPageState extends State<SignUpPage> {
   }
 
   void _register() async {
-    print("xxxxxxxxxxxxxxx");
-    final FirebaseUser user = (await
-    _auth.createUserWithEmailAndPassword(
+    final FirebaseUser user = (await _auth.createUserWithEmailAndPassword(
       email: _emailController.text,
       password: pwd,
-    )
-    ).user;
+    ))
+        .user;
     if (user != null) {
       setState(() {
         _success = true;
@@ -66,11 +65,8 @@ class _SignUpPageState extends State<SignUpPage> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child:
-          //////////////////////////////////////////////
-          new SingleChildScrollView(
+      child: new SingleChildScrollView(
         child: new Column(
-          //mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             new Container(
@@ -84,15 +80,6 @@ class _SignUpPageState extends State<SignUpPage> {
                     SizedBox(height: 30.0),
                     TextFormField(
                       controller: _emailController,
-                      decoration: const InputDecoration(labelText: 'Email'),
-                      validator: (String value) {
-                        if (value.isEmpty) {
-                          return 'Please enter some text';
-                        }
-                        return null;
-                      },
-                    ),
-                    /*TextField(
                       onChanged: (text) {
                         email = text;
                       },
@@ -126,8 +113,8 @@ class _SignUpPageState extends State<SignUpPage> {
                         ),
                         suffixIcon: Icon(Icons.phone),
                       ),
-                    ),*/
-                    SizedBox(height: 20.0),
+                    ),
+                    SizedBox(height: 10.0),
                     TextField(
                       onChanged: (text) {
                         pwd = text;
@@ -152,18 +139,7 @@ class _SignUpPageState extends State<SignUpPage> {
                       ),
                       obscureText: _isHidden,
                     ),
-                    /*TextFormField(
-                      controller: _passwordController,
-                      decoration: const InputDecoration(labelText:
-                      'Password'),
-                      validator: (String value) {
-                        if (value.isEmpty) {
-                          return 'Please enter some text';
-                        }
-                        return null;
-                      },
-                    ),*/
-                    SizedBox(height: 20.0),
+                    SizedBox(height: 10.0),
                     TextField(
                       onChanged: (text) {
                         pwd2 = text;
@@ -216,7 +192,7 @@ class _SignUpPageState extends State<SignUpPage> {
                       },
                       textAlign: TextAlign.right,
                       decoration: InputDecoration(
-                        hintText: "وقتاه مولودة؟",
+                        hintText: " mm-jj وقتاه مولودة؟",
                         hintStyle: TextStyle(
                           color: Colors.grey,
                           fontSize: 16.0,
@@ -226,13 +202,58 @@ class _SignUpPageState extends State<SignUpPage> {
                         ),
                       ),
                     ),
-                    SizedBox(height: 20.0),
+                    SizedBox(height: 10.0),
                     InkWell(
-                      onTap: () async {
-                        _register();
-                        
-                      },
-                      child: ButtonBuilder("سجل")),
+                        onTap: () async {
+                          if (email.isEmpty ||
+                              phone.isEmpty ||
+                              pwd.isEmpty ||
+                              pwd2.isEmpty ||
+                              emergencyPhone.isEmpty ||
+                              date.isEmpty)
+                            Fluttertoast.showToast(
+                                msg: "إملئ الفراغات",
+                                toastLength: Toast.LENGTH_SHORT,
+                                gravity: ToastGravity.BOTTOM,
+                                textColor: Colors.white,
+                                backgroundColor: Colors.red[50],
+                                fontSize: 18.0);
+                          else if (pwd != pwd2) {
+                            Fluttertoast.showToast(
+                                msg: "ثبت مليح في كلمة السر",
+                                toastLength: Toast.LENGTH_SHORT,
+                                gravity: ToastGravity.BOTTOM,
+                                textColor: Colors.white,
+                                backgroundColor: Colors.red[50],
+                                fontSize: 18.0);
+                          } else {
+                            _register();
+                            if (!_success) {
+                              Fluttertoast.showToast(
+                                  msg: "فما مشكل عاود جرب",
+                                  toastLength: Toast.LENGTH_SHORT,
+                                  gravity: ToastGravity.BOTTOM,
+                                  textColor: Colors.white,
+                                  backgroundColor: Colors.red[50],
+                                  fontSize: 18.0);
+                            } else {
+                              Fluttertoast.showToast(
+                                  msg: "تم بنجاح",
+                                  toastLength: Toast.LENGTH_SHORT,
+                                  gravity: ToastGravity.BOTTOM,
+                                  textColor: Colors.white,
+                                  backgroundColor: Colors.red[50],
+                                  fontSize: 18.0);
+                              final prefs =
+                                  await SharedPreferences.getInstance();
+                              final key = 'date';
+                              final value = date;
+                              prefs.setString(key, date);
+                              print('saved $value');
+                            }
+                          }
+                        },
+                        child: ButtonBuilder("سجل")),
                   ],
                 )),
           ],
@@ -241,7 +262,6 @@ class _SignUpPageState extends State<SignUpPage> {
 
       //////////////////////////////////////////////
     );
-
   }
 
   Widget buildText(String s) {
@@ -252,5 +272,3 @@ class _SignUpPageState extends State<SignUpPage> {
     );
   }
 }
-
-

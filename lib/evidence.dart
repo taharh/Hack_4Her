@@ -1,7 +1,86 @@
+import 'dart:io';
 import 'package:flutter/material.dart';
-import 'package:hack_her/list.dart';
+import 'package:flutter/services.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:image_picker/image_picker.dart';
 
-class Info extends StatelessWidget {
+class Evidence extends StatefulWidget {
+  @override
+  _EvidenceState createState() => _EvidenceState();
+}
+
+class _EvidenceState extends State<Evidence> {
+  File _image;
+
+  _imgFromCamera() async {
+    File image = await ImagePicker.pickImage(
+        source: ImageSource.camera, imageQuality: 50);
+
+    setState(() {
+      _image = image;
+      Fluttertoast.showToast(
+          msg: "تم تسجيل المعطيات بأمان",
+          toastLength: Toast.LENGTH_SHORT,
+          gravity: ToastGravity.BOTTOM,
+          textColor: Colors.white,
+          backgroundColor: Colors.red[100],
+          fontSize: 18.0);
+    });
+  }
+
+  _imgFromGallery() async {
+    File image = await ImagePicker.pickImage(
+        source: ImageSource.gallery, imageQuality: 50);
+
+    setState(() {
+      _image = image;
+      Fluttertoast.showToast(
+          msg: "تم تسجيل المعطيات بأمان",
+          toastLength: Toast.LENGTH_SHORT,
+          gravity: ToastGravity.BOTTOM,
+          textColor: Colors.white,
+          backgroundColor: Colors.red[100],
+          fontSize: 18.0);
+    });
+  }
+
+  void _showPicker(context) {
+    showModalBottomSheet(
+        context: context,
+        builder: (BuildContext bc) {
+          return SafeArea(
+            child: Container(
+              child: new Wrap(
+                children: <Widget>[
+                  new ListTile(
+                      leading: new Icon(Icons.photo_library),
+                      title: new Text('Photo Library'),
+                      onTap: () {
+                        _imgFromGallery();
+                        Navigator.of(context).pop();
+                      }),
+                  new ListTile(
+                    leading: new Icon(Icons.photo_camera),
+                    title: new Text('Camera'),
+                    onTap: () {
+                      _imgFromCamera();
+                      Navigator.of(context).pop();
+                    },
+                  ),
+                ],
+              ),
+            ),
+          );
+        });
+  }
+
+  String fileName;
+  String path;
+  Map<String, String> paths;
+  List<String> extensions;
+  bool isLoadingPath = false;
+  bool isMultiPick = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -69,7 +148,7 @@ class Info extends StatelessWidget {
                   Container(
                     width: MediaQuery.of(context).size.width,
                     child: Text(
-                      "عنا نوامر طبة و محامين و عدول تنفيذ",
+                      "سجل الأدلة بأمان",
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
@@ -100,42 +179,42 @@ class Info extends StatelessWidget {
                   children: [
                     InkWell(
                       onTap: () {
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: (context) => Lista()));
+                        _showPicker(context);
                       },
                       child: item(
                         context,
-                        "images/doctor.png",
-                        "طبيب",
-                        " طبيب 24 ",
+                        "images/1.png",
+                        "مقاطع فيديو",
+                        "",
                       ),
                     ),
                     SizedBox(
                       height: 10,
                     ),
-                    item(
-                      context,
-                      "images/judge.png",
-                      "عادل منفذ",
-                      " 32 عادل منقذ ",
+                    InkWell(
+                      onTap: () {
+                        _showPicker(context);
+                      },
+                      child: item(
+                        context,
+                        "images/2.png",
+                        "تقرير",
+                        "",
+                      ),
                     ),
                     SizedBox(
                       height: 10,
                     ),
-                    item(
-                      context,
-                      "images/lawyer.png",
-                      "محامي",
-                      " محامي 69 ",
-                    ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    item(
-                      context,
-                      "images/group.png",
-                      "جميعة",
-                      " 13 جمعية",
+                    InkWell(
+                      onTap: () {
+                        _showPicker(context);
+                      },
+                      child: item(
+                        context,
+                        "images/3.png",
+                        "صور",
+                        "",
+                      ),
                     ),
                   ],
                 ),
@@ -201,7 +280,7 @@ class Info extends StatelessWidget {
           ),
           Image.asset(
             img,
-            width: 40,
+            width: 30,
           ),
         ],
       ),

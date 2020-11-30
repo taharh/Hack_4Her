@@ -23,7 +23,7 @@ class Lista extends StatelessWidget {
                   gradient: LinearGradient(
                       begin: Alignment.topRight,
                       end: Alignment.bottomLeft,
-                      colors: [Colors.blue, Colors.red])),
+                      colors: [Colors.red[100], Colors.red[50]])),
               child: Column(
                 children: [
                   Container(
@@ -102,7 +102,7 @@ class Lista extends StatelessWidget {
                       },
                       child: item(
                         context,
-                        "images/icon.png",
+                        "images/doctor.png",
                         "1 طبيب",
                         "أمراض النساء",
                       ),
@@ -112,7 +112,7 @@ class Lista extends StatelessWidget {
                     ),
                     item(
                       context,
-                      "images/icon.png",
+                      "images/doctor.png",
                       "طبيب 2",
                       " الطبيب النفسي ",
                     ),
@@ -121,7 +121,7 @@ class Lista extends StatelessWidget {
                     ),
                     item(
                       context,
-                      "images/icon.png",
+                      "images/doctor.png",
                       " 3 طبيب",
                       "طبيب عقلي  ",
                     ),
@@ -191,7 +191,7 @@ class Lista extends StatelessWidget {
             ),
           ),
           Image.asset(
-            "images/icon.png",
+            img,
             width: 40,
           ),
         ],

@@ -89,7 +89,7 @@ class Person extends StatelessWidget {
                     ),
                   ],
                 ),
-                Image.asset("images/icon.png", width: MediaQuery.of(context).size.width/3),
+                Image.asset("images/doctor.png", width: MediaQuery.of(context).size.width/3),
               ],
             ),
             Container(

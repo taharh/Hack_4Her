@@ -35,7 +35,8 @@ dependencies:
   firebase_auth: ^0.14.0+5
   firebase_dynamic_links: ^0.5.1
   intl:
-
+  image_picker: ^0.6.7+14
+  flutter_local_notifications:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
 
@@ -64,6 +65,12 @@ flutter:
      - images/b4.png
      - images/b5.png
      - images/b6.png
+     - images/1.png
+     - images/2.png
+     - images/3.png
+     - images/doctor.png
+     - images/lawyer.png
+     - images/judge.png
      - images/chatbot.png
      - images/evidence.png
      - images/file.png

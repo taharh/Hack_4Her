@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
 import 'package:hack_her/authentification.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Calendar extends StatefulWidget {
   @override
@@ -28,12 +30,15 @@ class _CalendarState extends State<Calendar> {
             height: MediaQuery.of(context).size.height,
             width: MediaQuery.of(context).size.width,
           )),
-          Positioned(child: Image.asset("images/header.png",)),
+          Positioned(
+              child: Image.asset(
+            "images/header.png",
+          )),
           Positioned(
               top: MediaQuery.of(context).size.height / 4,
               left: 15,
               child: Container(
-                width: MediaQuery.of(context).size.width-30,
+                width: MediaQuery.of(context).size.width - 30,
                 child: pos > 0 ? setCalendar() : setCall(),
               )),
         ],
@@ -68,9 +73,16 @@ class _CalendarState extends State<Calendar> {
           view: CalendarView.month,
           showNavigationArrow: true,
           cellBorderColor: Colors.red[100],
-          onTap: (CalendarTapDetails details) {
+          onTap: (CalendarTapDetails details) async {
+            
+              final prefs = await SharedPreferences.getInstance();
+              final key = 'date';
+              final value = prefs.getString(key) ?? 0;
+              print('read: $value');
+              
             DateTime date = details.date;
-            if (date.toString().substring(5, 10) == "12-12") {
+            print(date.toString().substring(5, 10));
+            if (date.toString().substring(5, 10) == value) {
               Navigator.push(context,
                   MaterialPageRoute(builder: (context) => Authentification()));
             }
@@ -83,13 +95,13 @@ class _CalendarState extends State<Calendar> {
   Widget setCall() {
     return Center(
       child: Container(
-      decoration: BoxDecoration(
-        border: Border.all(color: Colors.white, width: 2),
-        borderRadius: BorderRadius.circular(25),
-        color: Colors.red[100],
-      ),
-      width: MediaQuery.of(context).size.width,
-      height: MediaQuery.of(context).size.width,
+        decoration: BoxDecoration(
+          border: Border.all(color: Colors.white, width: 2),
+          borderRadius: BorderRadius.circular(25),
+          color: Colors.red[100],
+        ),
+        width: MediaQuery.of(context).size.width,
+        height: MediaQuery.of(context).size.width,
         child: Padding(
           padding: const EdgeInsets.all(30.0),
           child: Container(
@@ -103,7 +115,7 @@ class _CalendarState extends State<Calendar> {
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Text(
-                    "تحب تطلب المدير ؟",
+                    "تحب تطلب مساعدة ؟",
                     style: TextStyle(
                       fontSize: 28,
                     ),
@@ -119,7 +131,9 @@ class _CalendarState extends State<Calendar> {
                           border: Border.all(width: 1, color: Colors.grey[100]),
                         ),
                         child: InkWell(
-                            onTap: () {},
+                            onTap: () {
+                              launch("tel://1899");
+                            },
                             child: Icon(Icons.call,
                                 size: 40, color: Colors.green))),
                     Container(

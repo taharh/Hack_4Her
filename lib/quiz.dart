@@ -1,8 +1,40 @@
 import 'package:flutter/material.dart';
 import 'package:hack_her/widgets/button.dart';
 import 'package:hack_her/widgets/text-right.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
-class Quiz extends StatelessWidget {
+class Quiz extends StatefulWidget {
+  @override
+  _QuizState createState() => _QuizState();
+}
+
+class _QuizState extends State<Quiz> {
+  int _radioValue = 0;
+  int index = 0;
+
+  List<String> questions = [
+    "حس بروحك متقلقة كيف تبدى بحذا راجلك؟",
+    "تحس روحك تراقب في تصرفاتك باش راجلك ولا حد من عايلتك ما يتغشش؟",
+    "راجلك يهين فيك قدام العباد؟",
+    "راجلك يعس عليك و يشوفلك في تاليفونك و ما يصدقكش؟",
+    "راجلك قطعك على عايلتك و اصحابك؟"
+  ];
+
+  void _handleRadioValueChange(int value) {
+    setState(() {
+      _radioValue = value;
+
+      switch (_radioValue) {
+        case 0:
+          break;
+        case 1:
+          break;
+        case 2:
+          break;
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -16,7 +48,7 @@ class Quiz extends StatelessWidget {
                 gradient: LinearGradient(
                     begin: Alignment.topRight,
                     end: Alignment.bottomLeft,
-                    colors: [Colors.blue, Colors.red])),
+                    colors: [Colors.red[300], Colors.red[100]])),
             child: Column(
               children: [
                 Container(
@@ -64,55 +96,117 @@ class Quiz extends StatelessWidget {
                     Container(
                         padding: EdgeInsets.all(10),
                         width: MediaQuery.of(context).size.width,
-                        child: TextRight("سؤال 1 من 10", Colors.white60, 15)),
+                        child:
+                            TextRight("سؤال $index من 5", Colors.white60, 12)),
                     Container(
                         padding: EdgeInsets.all(10),
                         width: MediaQuery.of(context).size.width,
-                        child: TextRight(
-                            "هل تعرضت للعنف من قبل ؟", Colors.white, 20)),
+                        child: TextRight(questions[index], Colors.white, 20)),
                   ],
                 )
               ],
             ),
           ),
           Positioned(
-            right: 20,
-            top: MediaQuery.of(context).size.height/2,
+              right: 20,
+              top: MediaQuery.of(context).size.height / 3 + 20,
               child: Container(
-            child: Column(
-              children: [
-                Container(
-                  margin: EdgeInsets.all(10),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    color: Colors.white
-                  ),
-                  child: SizedBox(
-                    width: MediaQuery.of(context).size.width-50,
-                    height: 60,
-                  ),
+                width: MediaQuery.of(context).size.width - 50,
+                child: Column(
+                  children: [
+                    Container(
+                      margin: EdgeInsets.all(10),
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          color: Colors.white),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          new Text(
+                            'لا',
+                            style: new TextStyle(
+                              fontSize: 16.0,
+                            ),
+                          ),
+                          new Radio(
+                            value: 1,
+                            groupValue: _radioValue,
+                            onChanged: _handleRadioValueChange,
+                          ),
+                        ],
+                      ),
+                    ),
+                    Container(
+                      margin: EdgeInsets.all(10),
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          color: Colors.white),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          new Text(
+                            'ساعات',
+                            style: new TextStyle(
+                              fontSize: 16.0,
+                            ),
+                          ),
+                          new Radio(
+                            value: 2,
+                            groupValue: _radioValue,
+                            onChanged: _handleRadioValueChange,
+                          ),
+                        ],
+                      ),
+                    ),
+                    Container(
+                      margin: EdgeInsets.all(10),
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          color: Colors.white),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          new Text(
+                            'ديما',
+                            style: new TextStyle(
+                              fontSize: 16.0,
+                            ),
+                          ),
+                          new Radio(
+                            value: 3,
+                            groupValue: _radioValue,
+                            onChanged: _handleRadioValueChange,
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
                 ),
-                Container(
-                  margin: EdgeInsets.all(10),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    color: Colors.white
-                  ),
-                  child: SizedBox(
-                    width: MediaQuery.of(context).size.width-50,
-                    height: 60,
-                  ),
-                ),
-              ],
-            ),
-          )),
+              )),
           Positioned(
-            top: MediaQuery.of(context).size.height-80,
-            left: 10,
-            child: 
-            Container(
-              width: MediaQuery.of(context).size.width-20,
-              child: ButtonBuilder("الي بعدوا")),
+            top: MediaQuery.of(context).size.height - 80,
+            right: 20,
+            child: InkWell(
+              onTap: () {
+                print(_radioValue);
+                if (index >= 4) {
+                  Fluttertoast.showToast(
+                      msg: " إذا تستحق مساعدة تنجم تتصل بالأطباء الي عنا متطوعين بش يعاونوك",
+                      toastLength: Toast.LENGTH_SHORT,
+                      gravity: ToastGravity.BOTTOM,
+                      textColor: Colors.white,
+                      backgroundColor: Colors.red[200],
+                      fontSize: 18.0);
+                } else {
+                  setState(() {
+                    index++;
+                  });
+                }
+              },
+              child: Container(
+                  width: MediaQuery.of(context).size.width - 50,
+                  child: ButtonBuilder("الي بعدو")),
+            ),
           ),
         ],
       ),
