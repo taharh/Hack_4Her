@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "585661319888",
+    "firebase_url": "https://amira-8861d.firebaseio.com",
+    "project_id": "amira-8861d",
+    "storage_bucket": "amira-8861d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:585661319888:android:3404461dee7c6afc95acd5",
+        "android_client_info": {
+          "package_name": "com.example.hack_her"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "585661319888-a3c5q00q9e3agdrp2jl9jiq3r9i97hgs.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.hack_her",
+            "certificate_hash": "e510f22dcc3ecbb8030d2c269d4f73000f106463"
+          }
+        },
+        {
+          "client_id": "585661319888-4ujgbelbgv1vh2sjqupgs7o66a3iukmv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAnJseeGyk91LFyRVCQZxg1lTXgKzgSaS0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "585661319888-4ujgbelbgv1vh2sjqupgs7o66a3iukmv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

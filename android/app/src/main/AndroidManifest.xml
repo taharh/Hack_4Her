@@ -1,8 +1,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.hack_her">
    <application
-        android:label="hack_her"
-        android:icon="@mipmap/ic_launcher">
+        android:label="Tanit"
+        android:icon="@drawable/icon">
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"

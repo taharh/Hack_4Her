@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "amira-ifra",
+  "private_key_id": "c3522e62649b6b671034d80b4dbbbb6dfd58feba",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDii6qW0696yAgk\nvbJ7NaqlG0bc+zkO7ssGQEc+i1usLC0OVY9sela7/tuq3KRbMg9CKcLTMV2EXBko\nLd/pgqwmEUCxZGmcg3oLptdMwOF0OH/JpyVWDsmFrONo3DX8StNHA3USQOZM488I\ncrYiqcX8AtX3jYBWhvMM+o3/bUPpQ5ggVwp/a7Iki6yRzemRIEN5QOzDNYwvwVZW\nghSSnWwZD2JEdxN2NhpPOtU/cCG3POxg/cYatjbs+HI0RRQgzPkSOuf3Hn2f080n\nXK+VYC91Jdoowe3p+xFzlEcstB+UboDj57Yq8FyhxqAf3QyJPlTEFJhDT7/wIgAW\ngqqQMHdtAgMBAAECggEAMyHi9vgAe236qJBIYJbUVT+61tW9IymymU6Yxf0eS9YM\ntVeKb6mNOhFj80SptAuwdfaHCrPxr5Y591+jUkk0IcNzHpbTX4gtW8PkhGZkfJ7j\n+NfJDYt44LsM+PX7GV6qITUej2gmkuQ4Lmf1xA0dqqvZL264sM70vNEwi55V3af/\nONKILOlfQjN5233NIB/oOQ67CnKZss07zcFpYi9loleRC3rM2i/ixynVlDqpf0MA\nKS0udEXa10Lva+txXTmG7BdHGrrXmJQzBaqD6yjt4ARCwUzduDI7m+eBPX9IKI3h\nE764r0/8AZe4Ex3FmzwgL94/JQXJUwT0yy3bwXXx4QKBgQD62DE3J00bT2+6icB8\ngD343bsbMM9rlOvzQjxKwX+GZSNMju6Qs6j59VLwDxpjypJrpiE6P4p1TJFsZ7Wf\njQ+JNea/fnzrmpQmHy2QDxubn9bPfKzWz1dPZc+To5AlTgs+f6fCHIP8KMZ12Wj3\npInPtPHdM5H2kNt4WWROxp5mIwKBgQDnM6BW4mhQBWHLSEz3I8PTYfG9wK7hysHA\nNNt4nvuz1F5jd5P/JKHyZrPBOXf6rBGpFgJ9J6k11rbu1ez1U7l9DhCJoXDu3QgS\nBiZfh7T7y5R/SsGes1q6MbZaAiO9xhNX9lJKfDSF0+ZiTLiae7pGjC+fusjAxi0O\n3eLXk4tdLwKBgQCm3WH/2nkEjdc5M6GEMJsJDhcFg3a3jh1XeNw6rnVypZzRtNMm\nFx11CajeYG2hrIOycJTx9orYdNLYVjUPqfqHv/97q1zWLcIXie35QtOOtslixQEE\n9HCUNJndEJU2+6+nJ6wlCGsUNtuuUa3t7tpt/WRXTZLvfnVAndaIQL/mGQKBgFsW\nf+k7MhW0yR6p0Yjc0l4JjJBRxZS3qTXsnTsch9YFqVpO1kQDTrqNs+xAlAByolKX\nlUtxwLyxZ0kZh03wOngGfoV60V+KPY+8VIn2kVtSjaLI9RdtWiVZSJqVlTdDPoO9\nTBaEcLz5Cx9XUrOqY20/9dNcZ5NrgH0G9kQwoQuJAoGAfUl8FU8vvYMFrEGKwYAA\nBawQ2vAJ+UATGpL+PNuV/94GMsO+cECHBH11gcouzaCUfhyZXfyuyaODA7CjnbpT\n2EBHypFBylU5yO/a5kb9mzXusUo1g56krsmgXJY5ee5upsmHWht5ku5ki5tfX0bi\nWzWm2UPmPxa0+6NxREtenfo=\n-----END PRIVATE KEY-----\n",
+  "client_email": "dialogfow@amira-ifra.iam.gserviceaccount.com",
+  "client_id": "113769336176468707291",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/dialogfow%40amira-ifra.iam.gserviceaccount.com"
+}
